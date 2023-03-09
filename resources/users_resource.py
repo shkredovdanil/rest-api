@@ -2,7 +2,7 @@ from flask_restful import abort, Resource
 from data import db_session
 from data.users import User
 from flask import jsonify
-from resources.pars import parser
+from resources.pars_users import parser
 from datetime import datetime
 
 
@@ -52,7 +52,6 @@ class UsersListResource(Resource):
             hashed_password=args['hashed_password'],
             modified_date=datetime.now()
         )
-        print('ok')
         session.add(user)
         session.commit()
         return jsonify({'success': 'OK'})
